@@ -1,0 +1,31 @@
+<form class="loginForm" [formGroup]="loginForm">
+    <h3>Welcome</h3>
+    <label>
+        Usuario:
+        <input type="text" formControlName="username">
+    </label>
+    <div *ngIf="username?.invalid && (username?.dirty || username?.touched)" class="alert alert-danger">
+        <div *ngIf="username?.errors?.required">
+            Username is required.
+        </div>
+        <div *ngIf="username?.errors?.minlength">
+            Username must be at least 4 characters long.
+        </div>
+    </div>
+    <label>
+        Contraseña:
+        <input type="password" formControlName="password">
+    </label>
+    <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="alert alert-danger">
+        <div *ngIf="password?.errors?.required">
+            Password is required.
+        </div>
+        <div *ngIf="password?.errors?.minlength">
+            Password must be at least 4 characters long.
+        </div>
+        <div *ngIf="password?.errors?.pattern">
+            Password must be pattern.
+        </div>
+    </div>
+    <button [disabled]="!loginForm.valid" (click)="submit()">Ingresar</button>
+</form>
