@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { StorageService } from 'src/app/shared/services/storage/storage.service';
 
 @Component({
@@ -10,7 +9,6 @@ import { StorageService } from 'src/app/shared/services/storage/storage.service'
 export class DashboardComponent implements OnInit {
 
   constructor(
-    private router: Router,
     private storageService: StorageService) { }
 
   async ngOnInit(): Promise<void> {
@@ -18,8 +16,5 @@ export class DashboardComponent implements OnInit {
      
   }
 
-  loggout(){
-    this.storageService.clearSessionInfo();
-    this.router.navigate(['/login']);
-  }
+  
 }

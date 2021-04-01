@@ -1,13 +1,49 @@
+$corporative-color : rgb(194, 11, 11);
+
 .container{
     display: flex;  
-    flex-flow: row wrap;
-    font-weight: bold;
-    text-align: center;
-}
-header,.content, footer{
-    flex: 1 100%;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
 }
 
-.content{
-    flex-direction: row;
+header, footer {
+    background-color: $corporative-color;
+    color: white;
+}
+
+header {
+    
+    
+    nav {
+        padding: 1rem;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+
+        ul {
+            display: flex;
+            justify-content: flex-end;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+    
+        li {
+            a {
+                display: block;
+                text-decoration: none;
+                padding: .5em 1em;
+            }
+    
+            a:hover {
+                background: tomato;
+                color: white;
+            }
+        }
+    }
+}
+
+footer{
+    padding-block: 1rem;
+    text-align: center;
 }

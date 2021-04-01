@@ -1,7 +1,21 @@
 <div class="container">
-  <header>Cabecera</header>
+  <header>
+    <nav class="menu">
+      <ng-container *ngIf="isLogged; else loginTemplate">
+        <ul>
+          <li><a>Productos</a></li>
+          <li><a>Cerrar Sesion</a></li>
+        </ul>  
+      </ng-container>
+      <ng-template #loginTemplate>
+        <ul >
+          <li><a>Login</a></li>
+        </ul>
+      </ng-template>
+    </nav>  
+  </header>
   <section class="content">
     <router-outlet></router-outlet>
   </section>
-  <footer>Pie de pagina</footer>
+  <footer>ScotiabankColpatria</footer>
 </div>

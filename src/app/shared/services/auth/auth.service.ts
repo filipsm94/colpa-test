@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthRequestModel, IUserModel } from '../../models/user.model';
 import { AuthApiService } from '../auth-api/auth-api.service';
 import { StorageService } from '../storage/storage.service';
@@ -8,7 +9,8 @@ export class AuthService {
 
   constructor(
     private authApiService: AuthApiService,
-    private storageService: StorageService  
+    private storageService: StorageService,
+    private router: Router
   ) { }
 
   loginUser(infoLogin: AuthRequestModel): Promise<IUserModel> {
@@ -24,6 +26,11 @@ export class AuthService {
       return true
     };
     return false
+  }
+
+  loggoutUser(){
+    this.storageService.clearSessionInfo();
+    this.router.navigate(['/login']);
   }
 
   saveUser(user: IUserModel): void {

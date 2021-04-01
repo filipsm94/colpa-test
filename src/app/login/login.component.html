@@ -1,31 +1,36 @@
 <form class="loginForm" [formGroup]="loginForm">
-    <h3>Welcome</h3>
-    <label>
-        Usuario:
-        <input type="text" formControlName="username">
-    </label>
+    <h1>Ingresa</h1>
+    <input type="text" placeholder="Username" formControlName="username" />
     <div *ngIf="username?.invalid && (username?.dirty || username?.touched)" class="alert alert-danger">
         <div *ngIf="username?.errors?.required">
-            Username is required.
+            El nombre de usuario es requerido.
         </div>
         <div *ngIf="username?.errors?.minlength">
-            Username must be at least 4 characters long.
+            El nombre de usuario debe tener minimo 4 caracteres.
         </div>
     </div>
-    <label>
-        Contraseña:
-        <input type="password" formControlName="password">
-    </label>
+    <input type="password" placeholder="Password" formControlName="password" />
     <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="alert alert-danger">
         <div *ngIf="password?.errors?.required">
-            Password is required.
+            La contraseña es requerida.
         </div>
         <div *ngIf="password?.errors?.minlength">
-            Password must be at least 4 characters long.
+            La contraseña debe tener minimo 4 caracteres.
         </div>
         <div *ngIf="password?.errors?.pattern">
-            Password must be pattern.
+            La contraseña debe tener Mayusculas, Minusculas y Numeros.
         </div>
     </div>
+    <a>Olvidaste tu contraseña?</a>
     <button [disabled]="!loginForm.valid" (click)="submit()">Ingresar</button>
+    <!-- <label>
+        Usuario:
+        <input type="text" formControlName="username">
+    </label> -->
+    
+    <!-- <label>
+        Contraseña:
+        <input type="password" formControlName="password">
+    </label> -->
+    
 </form>
