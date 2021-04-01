@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node lauch.js",
+    "start": "node launch.js",
     "dev": "ng serve",
     "build": "ng build",
     "test": "ng test",
