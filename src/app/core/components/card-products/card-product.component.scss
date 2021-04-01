@@ -1,0 +1,21 @@
+.card-product{
+    margin: 1rem;
+    width: 200px;
+    height: 140px;
+    border: 2px solid;
+    padding: 1rem;
+    box-sizing: border-box;
+    border-radius: 1rem;
+
+    @media screen and (max-width:1200px){
+        width: 190px;
+    }
+
+    @media screen and (max-width:900px){
+        width: 230px;
+    }
+
+    @media screen and (max-width:700px){
+        width: 250px;
+    }
+}

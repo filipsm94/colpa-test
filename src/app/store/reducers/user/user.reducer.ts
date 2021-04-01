@@ -3,8 +3,8 @@ import { IUserModel } from "src/app/shared/models/user.model";
 import { defineUser, deleteUser } from "../../actions/user.actions";
 
 const colpatriaUser: IUserModel = {
-    nombres:'',
-    apellidos:'',
+    nombre:'',
+    apellido:'',
     cedula:0,
 };
 

@@ -8,7 +8,7 @@ import { AuthService } from './shared/services/auth/auth.service';
 })
 export class AppComponent implements OnInit{
   title = 'Banca virtual';
-  public isLogged = false;
+  public isLogged = true;
 
   constructor(private authService: AuthService){
   }

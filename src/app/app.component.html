@@ -3,13 +3,13 @@
     <nav class="menu">
       <ng-container *ngIf="isLogged; else loginTemplate">
         <ul>
-          <li><a>Productos</a></li>
-          <li><a>Cerrar Sesion</a></li>
+          <li><a [routerLink]="['/products']" routerLinkActive="active">Productos</a></li>
+          <li><a (click)="loggout()">Cerrar Sesion</a></li>
         </ul>  
       </ng-container>
       <ng-template #loginTemplate>
         <ul >
-          <li><a>Login</a></li>
+          <li><a [routerLink]="['/login']"  routerLinkActive="active">Login</a></li>
         </ul>
       </ng-template>
     </nav>  

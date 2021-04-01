@@ -1,4 +1,6 @@
+import { IUserModel } from "src/app/shared/models/user.model";
+
 export interface IProductsApiService {
 
-  getAllProductsToUser(): Promise<any>
+  getAllProductsToUser(user: IUserModel): Promise<any>;
 }

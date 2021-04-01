@@ -5,6 +5,6 @@ export interface AuthRequestModel{
 
 export interface IUserModel {
     cedula?: number;
-    nombres?: string;
-    apellidos?: string;
+    nombre?: string;
+    apellido?: string;
 }

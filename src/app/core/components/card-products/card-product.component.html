@@ -1,0 +1,14 @@
+<div class="card-product">
+    <div>
+        <div>
+            <strong >{{accountNumber | opaqueText}} - {{accountType}}</strong>
+        </div>
+        <div>
+            <span>{{accountAmountAvaliable | currency : 'COP $' : 'symbol' : '1.0-0' }}</span>
+            <p>Saldo diponible</p>
+        </div>
+    </div>
+    <div>
+        <button>Ver Detalles</button>   
+    </div>
+</div>
