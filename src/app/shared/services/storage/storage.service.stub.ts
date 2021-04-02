@@ -19,7 +19,12 @@ export class StorageServiceStub implements IStorageService {
     throw new Error("Method not implemented.");
   }
   getProductSelected(): Promise<IProductModel> {
-    throw new Error("Method not implemented.");
+    return Promise.resolve({
+      accountAmountAvaliable:0,
+      accountId:'12313',
+      accountState:'activa',
+      accountType:'',
+    });
   }
   clearSessionInfo(): void {
     throw new Error("Method not implemented.");

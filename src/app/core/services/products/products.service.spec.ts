@@ -6,7 +6,7 @@ import { ProductsApiServiceStub } from '../products-api/products-api.service.stu
 
 import { ProductsService } from './products.service';
 
-fdescribe('ProductsService', () => {
+describe('ProductsService', () => {
   let service: ProductsService;
   let productsApiService: ProductsApiService;
 

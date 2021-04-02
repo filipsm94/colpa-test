@@ -2,9 +2,9 @@ import { IUserModel } from "src/app/shared/models/user.model";
 import { defineUser, deleteUser } from "../../actions/user.actions";
 import { colpatriaUser, userReducer } from "./user.reducer";
 
-describe('AuthReducer', () => {
+describe('userReducer', () => {
 
-    it('should return UUID',() => {
+    it('should return User',() => {
         const initialState = colpatriaUser;
         const expectedState:IUserModel = {
             nombre:'felipe',
@@ -21,7 +21,7 @@ describe('AuthReducer', () => {
         expect(nextState).toEqual(expectedState);
     })
 
-    it('should reset UUID',() => {
+    it('should reset User',() => {
         const initialState:IUserModel = {
             nombre:'felipe',
             apellido:'mesa',

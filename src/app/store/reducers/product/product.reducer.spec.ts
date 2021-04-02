@@ -2,7 +2,7 @@ import { IProductModel } from "src/app/shared/models/products.model";
 import { defineProductSelected, deleteProductSelected } from "../../actions/product.actions";
 import { colpatriaProduct, productReducer } from "./product.reducer";
 
-describe('AuthReducer', () => {
+describe('productReducer', () => {
 
     it('should return selected product',() => {
         const initialState = colpatriaProduct;
@@ -24,11 +24,11 @@ describe('AuthReducer', () => {
     })
 
     it('should reset selected product',() => {
-        const initialState = colpatriaProduct;
-        const expectedState:IProductModel = { 
-            accountId: '',
-            accountType: '',
-            accountState: '',
+        const expectedState = colpatriaProduct;
+        const initialState:IProductModel = { 
+            accountId: '1241',
+            accountType: 'asdf',
+            accountState: 'asdf',
             accountAmountAvaliable: 10
          };
 

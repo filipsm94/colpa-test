@@ -19,15 +19,13 @@ export class DetailProductComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.loadInfo();
+    this.loadInfoTrasactions();
   }
 
-  async loadInfo(){
-    console.log(await this.storageService.getProductSelected());
+  async loadInfoTrasactions(){
     this.product = await this.storageService.getProductSelected();
     const getAllTransactions = await this.productsService.getTransactionToAccount(this.product?.accountId);
     this.transactions = this.productsService.orderByDate(getAllTransactions)
   }
-
   
 }

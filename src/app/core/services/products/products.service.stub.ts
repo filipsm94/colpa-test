@@ -4,22 +4,22 @@ import { IProductsService } from './products.service.type';
 
 export class ProductsServiceStub implements IProductsService {
   getAllProducts(user: IUserModel): Promise<IProductModel[]> {
-    throw new Error('Method not implemented.');
+    return Promise.resolve([])
   }
   getTransactionToAccount(accountId: string): Promise<ITransactionModel[]> {
-    throw new Error('Method not implemented.');
+    return Promise.resolve([])
   }
   orderProducts(products: IProductModel[]): IProductModel[] {
-    throw new Error('Method not implemented.');
+    return []
   }
   orderByTypeAccount(products: IProductModel[]): IProductModel[] {
-    throw new Error('Method not implemented.');
+    return []
   }
   orderByAmountAvaliable(products: IProductModel[]): IProductModel[] {
-    throw new Error('Method not implemented.');
+    return []
   }
   orderByDate(transactions: ITransactionModel[]): ITransactionModel[] {
-    throw new Error('Method not implemented.');
+    return []
   }
 
 }
