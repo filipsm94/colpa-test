@@ -1,6 +1,13 @@
 # ColpatriaTest
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
+Para iniciar el proyecto es necesario, realizar los siguientes pasos en la consola
+1) npm install
+2) npm run dev
+
+Abrir el navegador despues del comando (2) en http://localhost:4200/
+
+Felipe Mesa
 
 ## Development server
 
