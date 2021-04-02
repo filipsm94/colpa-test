@@ -43,10 +43,11 @@ export class LoginComponent implements OnInit {
   }
 
   async submit(): Promise<void> {
-    console.log('logueando');
     this.infoLogin = {...this.loginForm.value};
     try {
-      const user = await this.authService.loginUser(this.infoLogin)
+      const user = await this.authService.loginUser(this.infoLogin);
+      console.log('probando',user);
+      
       this.saveUserInStore(user);
       this.goToDashboard();
     } catch (error) {
@@ -59,8 +60,6 @@ export class LoginComponent implements OnInit {
   }
 
   goToDashboard():void{
-    console.log('entre');
-    
     this.router.navigate(['/products']);
   }
 

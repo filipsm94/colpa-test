@@ -6,7 +6,7 @@ import { AuthServiceStub } from '../shared/services/auth/auth.service.stub';
 
 import { AuthGuard } from './auth.guard';
 
-fdescribe('AuthGuard', () => {
+describe('AuthGuard', () => {
   let guard: AuthGuard;
   let router: Router;
   let authService: AuthService

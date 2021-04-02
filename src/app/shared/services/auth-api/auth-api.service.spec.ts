@@ -31,7 +31,7 @@ describe('AuthApiService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should be created', () => {
+  it('should be loginUser', () => {
     const mockRequest: AuthRequestModel = {
       username:'felipe',
       password:'123'
@@ -54,4 +54,31 @@ describe('AuthApiService', () => {
       }
     })
   });
+
+  it('should be loginUser', () => {
+    const mockRequest: AuthRequestModel = {
+      username:'felipe',
+      password:'123'
+    };
+    const responseMock = {
+      data:{
+
+      },
+      notification:{}
+    }
+    spyOn(storageService,'setUuid');
+    service.loginUser(mockRequest).then((response)=>{
+    }).catch((error) => {
+      expect(error).toBeDefined();
+    });
+    const request = httpMock.expectOne('https://run.mocky.io/v3/6b254644-d547-4b14-948a-a18333d2ac23')
+    expect(request.request.method).toBe('POST');
+    request.flush(responseMock,{
+      status: 401, statusText: 'error',
+      headers:{
+        "X-UUID-USER":"xx1"
+      }
+    })
+  });
+  
 });
