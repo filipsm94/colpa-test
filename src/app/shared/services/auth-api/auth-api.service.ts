@@ -4,9 +4,10 @@ import { throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { AuthRequestModel } from '../../models/user.model';
 import { StorageService } from '../storage/storage.service';
+import { IAuthApiService } from './auth-api.service.type';
 
 @Injectable()
-export class AuthApiService {
+export class AuthApiService implements IAuthApiService {
 
   constructor(
     private httpClient: HttpClient,

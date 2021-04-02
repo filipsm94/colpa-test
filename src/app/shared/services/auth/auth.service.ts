@@ -4,9 +4,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthRequestModel, IUserModel } from '../../models/user.model';
 import { AuthApiService } from '../auth-api/auth-api.service';
 import { StorageService } from '../storage/storage.service';
+import { IAuthService } from './auth.service.type';
 
 @Injectable()
-export class AuthService {
+export class AuthService implements IAuthService{
 
   private readonly _isLoggedIn = new BehaviorSubject(false);
 

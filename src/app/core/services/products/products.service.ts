@@ -5,9 +5,7 @@ import { IUserModel } from 'src/app/shared/models/user.model';
 import { ProductsApiService } from '../products-api/products-api.service';
 import { IProductsService } from './products.service.type';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ProductsService implements IProductsService {
 
   constructor(

@@ -11,11 +11,10 @@ import { getUserSelector } from 'src/app/store/selectors/user/user.selectors';
 import { IProductModel } from '../../models/products.model';
 import { defineProductSelected } from 'src/app/store/actions/product.actions';
 import { getProductSelector } from 'src/app/store/selectors/product/product.selectors';
+import { IStorageService } from './storage.service.type';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class StorageService {
+@Injectable()
+export class StorageService implements IStorageService {
 
   constructor(private store: Store<ColpatriaState>) { }
 
