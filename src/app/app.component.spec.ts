@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { AuthService } from './shared/services/auth/auth.service';
 import { AuthServiceStub } from './shared/services/auth/auth.service.stub';
 
-fdescribe('AppComponent', () => {
+describe('AppComponent', () => {
 
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;

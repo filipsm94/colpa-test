@@ -2,7 +2,7 @@ import { Action, createReducer, on } from "@ngrx/store";
 import { IAuthModel } from "src/app/shared/models/auth.model";
 import { defineUuid, deleteUuid } from "../../actions/auth.actions";
 
-const colpatriaAuth: IAuthModel = { UuidUser: '' }
+export const colpatriaAuth: IAuthModel = { UuidUser: '' }
 
 const _authReducer = createReducer(
     colpatriaAuth,

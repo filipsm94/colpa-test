@@ -9,7 +9,7 @@ import { IUserModel } from '../../models/user.model';
 import {map, take} from 'rxjs/operators';
 import { getUserSelector } from 'src/app/store/selectors/user/user.selectors';
 import { IProductModel } from '../../models/products.model';
-import { defineProductSelected } from 'src/app/store/actions/product.actions';
+import { defineProductSelected, deleteProductSelected } from 'src/app/store/actions/product.actions';
 import { getProductSelector } from 'src/app/store/selectors/product/product.selectors';
 import { IStorageService } from './storage.service.type';
 
@@ -60,6 +60,7 @@ export class StorageService implements IStorageService {
 
   clearSessionInfo(){
     this.dispatchAction(deleteUuid());
-    this.dispatchAction(deleteUser())
+    this.dispatchAction(deleteUser());
+    this.dispatchAction(deleteProductSelected())
   }
 }

@@ -2,7 +2,7 @@ import { Action, createReducer, on } from "@ngrx/store";
 import { IUserModel } from "src/app/shared/models/user.model";
 import { defineUser, deleteUser } from "../../actions/user.actions";
 
-const colpatriaUser: IUserModel = {
+export const colpatriaUser: IUserModel = {
     nombre:'',
     apellido:'',
     cedula:0,

@@ -4,7 +4,7 @@ import { IUserModel } from "src/app/shared/models/user.model";
 import { defineProductSelected, deleteProductSelected } from "../../actions/product.actions";
 import { defineUser, deleteUser } from "../../actions/user.actions";
 
-const colpatriaProduct: IProductModel = {
+export const colpatriaProduct: IProductModel = {
     accountAmountAvaliable:0,
     accountId:'',
     accountState:'',
