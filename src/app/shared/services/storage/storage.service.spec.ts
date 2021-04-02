@@ -43,8 +43,6 @@ describe('StorageService', () => {
   it('should be call getUuid', async () => {
     store.overrideSelector(getUuidSelector, 'algo');
     const response = await service.getUuid();
-    console.log(response);
-    
     expect(response).toEqual('algo');
   });
 
@@ -69,8 +67,6 @@ describe('StorageService', () => {
     }
     store.overrideSelector(getUserSelector, mockUser);
     const response = await service.getUser();
-    console.log(response);
-    
     expect(response).toEqual(mockUser);
   });
 

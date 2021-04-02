@@ -13,7 +13,7 @@ class RouterStub {
   navigate(commands: any[], extras?: any) { }
 }
 
-fdescribe('LoginComponent', () => {
+describe('LoginComponent', () => {
   
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;

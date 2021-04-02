@@ -46,8 +46,6 @@ export class LoginComponent implements OnInit {
     this.infoLogin = {...this.loginForm.value};
     try {
       const user = await this.authService.loginUser(this.infoLogin);
-      console.log('probando',user);
-      
       this.saveUserInStore(user);
       this.goToDashboard();
     } catch (error) {
