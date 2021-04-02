@@ -6,9 +6,9 @@ const app = express();
 app.use(express.static('./dist/colaptriaTest'));
 
 app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname,'/dist/colaptriaTest/index.html'));
+    res.sendFile('/dist/colaptriaTest/index.html');
 });
 
 app.listen(process.env.PORT || 8080, () => {
-    console.log('app ready');
+    console.log(`Express server listening on port ${process.env.PORT}`);
 });
