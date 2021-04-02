@@ -10,7 +10,7 @@ import { StorageServiceStub } from '../storage/storage.service.stub';
 
 import { AuthService } from './auth.service';
 
-fdescribe('AuthService', () => {
+describe('AuthService', () => {
   let service: AuthService;
   let authApiService: AuthApiService;
   let storageService: StorageService;
