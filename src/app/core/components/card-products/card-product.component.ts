@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { IProductModel } from 'src/app/shared/models/products.model';
 
 @Component({
   selector: 'app-card-product',
@@ -6,15 +7,22 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./card-product.component.scss']
 })
 export class CardProductComponent {
-  @Input() accountNumber: string;
-  @Input() accountType: string;
-  @Input() accountState: string;
-  @Input() accountAmountAvaliable?: number;
+  @Input() product: IProductModel;
 
-  constructor(){
-    this.accountNumber='';
-    this.accountType='';
-    this.accountState='';
+  @Output() productSelectionEvent = new EventEmitter<IProductModel>();
+
+  constructor() {
+    this.product={
+      accountAmountAvaliable:0,
+      accountId:'',
+      accountState:'',
+      accountType:''
+    }
+  }
+
+  selectedProduct(product: IProductModel): void{
+    this.productSelectionEvent.emit(product);
   }
 
 }
+

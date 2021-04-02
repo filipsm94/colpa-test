@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { IProductModel, ITransactionModel } from 'src/app/shared/models/products.model';
+import { StorageService } from 'src/app/shared/services/storage/storage.service';
+import { ProductsService } from '../../services/products/products.service';
 
 @Component({
   selector: 'app-detail-product',
@@ -7,9 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailProductComponent implements OnInit {
 
-  constructor() { }
+  public transactions: ITransactionModel[] = []  
+  public product: IProductModel|undefined;
+
+  constructor(
+    private storageService: StorageService,
+    private productsService: ProductsService
+    ) { }
 
   ngOnInit(): void {
+    this.loadInfo();
   }
 
+  async loadInfo(){
+    console.log(await this.storageService.getProductSelected());
+    this.product = await this.storageService.getProductSelected();
+    const getAllTransactions = await this.productsService.getTransactionToAccount(this.product?.accountId);
+    this.transactions = this.productsService.orderByDate(getAllTransactions)
+  }
+
+  
 }

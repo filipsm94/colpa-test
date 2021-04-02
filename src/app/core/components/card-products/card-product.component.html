@@ -1,14 +1,14 @@
 <div class="card-product">
-    <div>
-        <div>
-            <strong >{{accountNumber | opaqueText}} - {{accountType}}</strong>
+    <div class="content-card">
+        <div class="title-card">
+            <strong >{{product.accountId | opaqueText}} - {{product.accountType }}</strong>
         </div>
-        <div>
-            <span>{{accountAmountAvaliable | currency : 'COP $' : 'symbol' : '1.0-0' }}</span>
-            <p>Saldo diponible</p>
+        <div class="amount-card">
+            <p class="text-center"><strong >{{product.accountAmountAvaliable | currency : 'COP $' : 'symbol' : '1.0-0' }}</strong></p>
+            <p class="text-center">Saldo diponible</p>
         </div>
     </div>
-    <div>
-        <button>Ver Detalles</button>   
+    <div class="action-card">
+        <button class="btn" (click)="selectedProduct(product)">Ver Detalles</button>   
     </div>
 </div>

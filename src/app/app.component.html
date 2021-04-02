@@ -1,7 +1,7 @@
 <div class="container">
   <header>
     <nav class="menu">
-      <ng-container *ngIf="isLogged; else loginTemplate">
+      <ng-container *ngIf="isLogged$ | async; else loginTemplate">
         <ul>
           <li><a [routerLink]="['/products']" routerLinkActive="active">Productos</a></li>
           <li><a (click)="loggout()">Cerrar Sesion</a></li>
@@ -16,6 +16,8 @@
   </header>
   <section class="content">
     <router-outlet></router-outlet>
+    
   </section>
-  <footer>ScotiabankColpatria</footer>
+  <footer><i class="fas fa-cloud"></i>
+    ScotiabankColpatria</footer>
 </div>

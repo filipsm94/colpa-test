@@ -1,11 +1,12 @@
 .card-product{
     margin: 1rem;
     width: 200px;
-    height: 140px;
+    height: 200px;
     border: 2px solid;
     padding: 1rem;
     box-sizing: border-box;
     border-radius: 1rem;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 
     @media screen and (max-width:1200px){
         width: 190px;
@@ -17,5 +18,33 @@
 
     @media screen and (max-width:700px){
         width: 250px;
+    }
+
+    .content-card{
+        margin-block-end: 1rem;
+
+        .title-card{
+            border-bottom: 1px solid lightblue;
+            margin-block-end: 1rem;
+        }
+
+        .amount-card{
+            font-size: medium;
+        }
+
+    }
+
+    .action-card{
+        text-align: center;
+    }
+
+    button {
+        background-color: #2A265F;
+        border: 0;
+        border-radius: 50px;
+        color: #fff;
+        font-size: 12px;
+        padding: 12px 25px;
+        letter-spacing: 1px;
     }
 }

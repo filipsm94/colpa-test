@@ -1,12 +1,11 @@
 <section class="dasboard">
-    <h1>Bienvenido {{user.nombre}}</h1>
+    <h1>Bienvenido {{user.nombre | uppercase}}</h1>
     <p>A continuacion veras las cuentas que tienes con nosotros</p>
     <h3>Mis cuentas</h3>
     <div class="products">
         <app-card-product *ngFor="let product of products" 
-            [accountNumber]="product.accountId"
-            [accountType]="product.accountType"
-            [accountState]="product.accountState"
-            [accountAmountAvaliable]="product.accountAmountAvaliable"></app-card-product>
+            [product]="product"
+            (productSelectionEvent)="goToSelectionProductToDetail($event)"
+            ></app-card-product>
     </div>
 </section>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { AuthService } from './shared/services/auth/auth.service';
 
 @Component({
@@ -8,15 +9,13 @@ import { AuthService } from './shared/services/auth/auth.service';
 })
 export class AppComponent implements OnInit{
   title = 'Banca virtual';
-  public isLogged = true;
+  public isLogged$: Observable<boolean> = of(false);
 
   constructor(private authService: AuthService){
   }
 
   async ngOnInit(): Promise<void> {
-    if(await this.authService.isLoggedIn()){
-      this.isLogged = true
-    }
+   this.isLogged$ = this.authService.isLogged;
   }
 
 

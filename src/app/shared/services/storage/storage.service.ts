@@ -8,6 +8,9 @@ import { getUuidSelector } from 'src/app/store/selectors/auth/auth.selectors';
 import { IUserModel } from '../../models/user.model';
 import {map, take} from 'rxjs/operators';
 import { getUserSelector } from 'src/app/store/selectors/user/user.selectors';
+import { IProductModel } from '../../models/products.model';
+import { defineProductSelected } from 'src/app/store/actions/product.actions';
+import { getProductSelector } from 'src/app/store/selectors/product/product.selectors';
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +43,18 @@ export class StorageService {
     return this.store.pipe(
       select(getUserSelector),
       map((user) => user),
+      take(1)
+    ).toPromise();
+  }
+
+  setProductSelected(product: IProductModel){
+    this.dispatchAction(defineProductSelected({payload: product}))
+  }
+
+  getProductSelected(): Promise<IProductModel>{
+    return this.store.pipe(
+      select(getProductSelector),
+      map((product) => product),
       take(1)
     ).toPromise();
   }

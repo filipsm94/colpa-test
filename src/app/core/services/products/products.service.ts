@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IProductModel } from 'src/app/shared/models/products.model';
+import { IProductModel, ITransactionModel } from 'src/app/shared/models/products.model';
 import { accountType } from 'src/app/shared/models/types-account.model';
 import { IUserModel } from 'src/app/shared/models/user.model';
 import { ProductsApiService } from '../products-api/products-api.service';
@@ -17,6 +17,14 @@ export class ProductsService implements IProductsService {
 
   getAllProducts(user: IUserModel): Promise<IProductModel[]> {
     return this.productsApi.getAllProductsToUser(user).then((response) => {
+      return response
+    }).catch((error) => {
+      throw Error(error)
+    }).finally(() => {});
+  }
+
+  getTransactionToAccount(accountId: string): Promise<ITransactionModel[]>{
+    return this.productsApi.getAllTransactionToAccount(accountId).then((response) => {
       return response
     }).catch((error) => {
       throw Error(error)
@@ -47,5 +55,9 @@ export class ProductsService implements IProductsService {
       }
       return 0;
     });
+  }
+
+  orderByDate(transactions: ITransactionModel[]): ITransactionModel[]{
+    return transactions.sort((a, b) => Date.parse(b.dateTransaction) - Date.parse(a.dateTransaction)); 
   }
 }

@@ -12,8 +12,23 @@ export class ProductsApiService implements IProductsApiService {
   constructor(private httpClient: HttpClient) { }
 
   getAllProductsToUser(user: IUserModel): Promise<any> {
-    return this.httpClient.post('https://run.mocky.io/v3/966b2a22-d110-4598-bf23-6d53c8fe81d6',
+    return this.httpClient.post('https://run.mocky.io/v3/9862c578-93a5-4e97-bbbf-966d286ff1dc',
     user,
+    {observe:'response'}
+  ).pipe(
+      map((response) => {
+        return response.body;
+      }),
+      catchError((error) => {
+        return throwError(error);
+      })
+    ).toPromise();
+  }
+
+
+  getAllTransactionToAccount(accountId: string): Promise<any> {
+    return this.httpClient.post('https://run.mocky.io/v3/97281e7a-59b1-4c99-9cce-3626b61106d3',
+    accountId,
     {observe:'response'}
   ).pipe(
       map((response) => {
