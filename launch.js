@@ -3,12 +3,12 @@ const express = require('express'),
 
 const app = express();
 
-app.use(express.static('./dist/colaptriaTest'));
+app.use(express.static('./dist/colpatriaTest'));
 
 app.get('/*', (req, res) => {
-    res.sendFile('/dist/colaptriaTest/index.html');
+    res.sendFile(path.join(__dirname,'/dist/colpatriaTest/index.html'));
 });
 
 app.listen(process.env.PORT || 8080, () => {
-    console.log(`Express server listening on port ${process.env.PORT}`);
+    console.log(`Express server listening on port ${port}`);
 });
