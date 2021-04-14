@@ -22,7 +22,7 @@ export class DetailProductComponent implements OnInit {
     this.loadInfoTrasactions();
   }
 
-  async loadInfoTrasactions(){
+  public async loadInfoTrasactions(): Promise<void>{
     this.product = await this.storageService.getProductSelected();
     const getAllTransactions = await this.productsService.getTransactionToAccount(this.product?.accountId);
     this.transactions = this.productsService.orderByDate(getAllTransactions);

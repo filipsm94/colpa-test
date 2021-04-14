@@ -21,11 +21,11 @@ export class AuthService implements IAuthService{
     return this._isLoggedIn;
   }
 
-  public setLogged(value: boolean){
+  public setLogged(value: boolean): void{
     this._isLoggedIn.next(value);
   }
 
-  loginUser(infoLogin: AuthRequestModel): Promise<IUserModel> {
+  public loginUser(infoLogin: AuthRequestModel): Promise<IUserModel> {
     return this.authApiService.loginUser(infoLogin).then((response) => {
       return response.user;
     }).catch((error) => {
@@ -33,7 +33,7 @@ export class AuthService implements IAuthService{
     });
   }
 
-  async isLoggedIn(): Promise<boolean> {
+  public async isLoggedIn(): Promise<boolean> {
     if (await this.storageService.getUuid()){
       this.setLogged(true);
       return true;
@@ -41,13 +41,13 @@ export class AuthService implements IAuthService{
     return false;
   }
 
-  loggoutUser(){
+  public loggoutUser(): void{
     this.storageService.clearSessionInfo();
     this.setLogged(false);
     this.router.navigate(['/login']);
   }
 
-  saveUser(user: IUserModel): void {
+  public saveUser(user: IUserModel): void {
     this.storageService.setUser(user);
   }
 }

@@ -19,7 +19,7 @@ export class AppComponent implements OnInit{
   }
 
 
-  loggout(){
+  public loggout(): void{
     this.authService.loggoutUser();
   }
 

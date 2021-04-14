@@ -36,13 +36,13 @@ export class LoginComponent implements OnInit {
     };
   }
 
-  get username() { return this.loginForm.get('username'); }
-  get password() { return this.loginForm.get('password'); }
+  get username(): any { return this.loginForm.get('username'); }
+  get password(): any { return this.loginForm.get('password'); }
 
   ngOnInit(): void {
   }
 
-  async submit(): Promise<void> {
+  public async submit(): Promise<void> {
     this.infoLogin = {...this.loginForm.value};
     try {
       const user = await this.authService.loginUser(this.infoLogin);
@@ -53,11 +53,11 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  saveUserInStore(user: IUserModel){
+  public saveUserInStore(user: IUserModel): void{
     this.authService.saveUser(user);
   }
 
-  goToDashboard(): void{
+  public goToDashboard(): void{
     this.router.navigate(['/products']);
   }
 

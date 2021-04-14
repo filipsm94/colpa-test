@@ -22,21 +22,21 @@ export class DashboardComponent implements OnInit {
     ) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.getUsertoSession();
     this.getProducts();
   }
 
-  async getUsertoSession(): Promise<void> {
+  public async getUsertoSession(): Promise<void> {
     this.user = await this.storageService.getUser();
   }
 
-  async getProducts(): Promise<void> {
+  public async getProducts(): Promise<void> {
     const allProducts = await this.productsService.getAllProducts({...this.user});
     this.products = this.productsService.orderProducts(allProducts);
   }
 
-  goToSelectionProductToDetail(productEvent: IProductModel){
+  public goToSelectionProductToDetail(productEvent: IProductModel): void{
     this.storageService.setProductSelected(productEvent);
     this.router.navigate(['products/detail']);
   }
