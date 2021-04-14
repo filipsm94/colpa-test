@@ -1,4 +1,4 @@
-@import '../../../../colors';
+@import '../../../../colors', '../../../../mixin';
 
 .card-product{
     margin: 1rem;
@@ -10,17 +10,11 @@
     border-radius: 1rem;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 
-    @media screen and (max-width:1200px){
-        width: 190px;
-    }
+    @include screen(1200px, 190px);
 
-    @media screen and (max-width:900px){
-        width: 230px;
-    }
+    @include screen(900px, 230px);
 
-    @media screen and (max-width:700px){
-        width: 250px;
-    }
+    @include screen(700px, 250px);
 
     .content-card{
         margin-block-end: 1rem;

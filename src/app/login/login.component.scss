@@ -1,4 +1,4 @@
-@import '../../colors';
+@import '../../colors','../../mixin';
 
 form {
     display: flex;
@@ -10,9 +10,7 @@ form {
     border-radius: 1rem 0 1rem 0;
     padding: 2rem;
 
-    @media screen and (max-width:600px){
-        width: 80%;
-    }
+    @include screen(600px, 80%);
 
     a {
         color: $secondary-color;

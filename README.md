@@ -7,6 +7,8 @@ Para iniciar el proyecto es necesario, realizar los siguientes pasos en la conso
 
 Abrir el navegador despues del comando (2) en http://localhost:4200/
 
+para el usuario y la contraseña solo tienen que cumplir con las validaciones puesto que el ingreso esta mockeado
+
 Felipe Mesa
 
 ## Development server
