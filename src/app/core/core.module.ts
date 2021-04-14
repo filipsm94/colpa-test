@@ -21,7 +21,7 @@ import { OpaqueTextPipe } from '../shared/pipes/opaque-text.pipe';
     CommonModule,
     CoreRoutingModule
   ],
-  providers:[
+  providers: [
     ProductsService,
     ProductsApiService,
     OpaqueTextPipe

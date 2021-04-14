@@ -1,5 +1,5 @@
-import { IProductModel, ITransactionModel } from "src/app/shared/models/products.model";
-import { IUserModel } from "src/app/shared/models/user.model";
+import { IProductModel, ITransactionModel } from 'src/app/shared/models/products.model';
+import { IUserModel } from 'src/app/shared/models/user.model';
 
 export interface IProductsService {
 
@@ -7,11 +7,11 @@ export interface IProductsService {
 
   getTransactionToAccount(accountId: string): Promise<ITransactionModel[]>;
 
-  orderProducts(products: IProductModel[]):IProductModel[];
+  orderProducts(products: IProductModel[]): IProductModel[];
 
-  orderByTypeAccount(products: IProductModel[]):IProductModel[];
+  orderByTypeAccount(products: IProductModel[]): IProductModel[];
 
-  orderByAmountAvaliable(products: IProductModel[]):IProductModel[];
+  orderByAmountAvaliable(products: IProductModel[]): IProductModel[];
 
   orderByDate(transactions: ITransactionModel[]): ITransactionModel[];
 }

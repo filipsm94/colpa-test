@@ -18,7 +18,7 @@ export class AuthService implements IAuthService{
   ) { }
 
   get isLogged(): Observable<boolean>{
-    return this._isLoggedIn
+    return this._isLoggedIn;
   }
 
   public setLogged(value: boolean){
@@ -27,18 +27,18 @@ export class AuthService implements IAuthService{
 
   loginUser(infoLogin: AuthRequestModel): Promise<IUserModel> {
     return this.authApiService.loginUser(infoLogin).then((response) => {
-      return response.user
+      return response.user;
     }).catch((error) => {
-      throw Error(error)
+      throw Error(error);
     });
   }
 
   async isLoggedIn(): Promise<boolean> {
     if (await this.storageService.getUuid()){
       this.setLogged(true);
-      return true
-    };
-    return false
+      return true;
+    }
+    return false;
   }
 
   loggoutUser(){
@@ -48,6 +48,6 @@ export class AuthService implements IAuthService{
   }
 
   saveUser(user: IUserModel): void {
-    this.storageService.setUser(user)
+    this.storageService.setUser(user);
   }
 }

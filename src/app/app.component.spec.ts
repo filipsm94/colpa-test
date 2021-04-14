@@ -19,12 +19,12 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
-      providers:[
+      providers: [
         { provide: AuthService , useClass: AuthServiceStub }
       ]
     }).compileComponents();
     authService = TestBed.inject(AuthService);
-    fixture = TestBed.createComponent(AppComponent)
+    fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
   });
 
@@ -37,13 +37,13 @@ describe('AppComponent', () => {
   });
 
   it('should call get AuthService logged', () => {
-    spyOnProperty(authService,'isLogged').and.returnValue(of(true));
+    spyOnProperty(authService, 'isLogged').and.returnValue(of(true));
     component.ngOnInit();
     expect(component.isLogged$).toBeTruthy();
   });
 
   it('should call loggoutUser', () => {
-    spyOn(authService,'loggoutUser');
+    spyOn(authService, 'loggoutUser');
     component.loggout();
     expect(authService.loggoutUser).toHaveBeenCalled();
   });

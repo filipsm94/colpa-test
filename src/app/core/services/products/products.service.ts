@@ -15,35 +15,35 @@ export class ProductsService implements IProductsService {
 
   getAllProducts(user: IUserModel): Promise<IProductModel[]> {
     return this.productsApi.getAllProductsToUser(user).then((response) => {
-      return response
+      return response;
     }).catch((error) => {
-      throw Error(error)
+      throw Error(error);
     }).finally(() => {});
   }
 
   getTransactionToAccount(accountId: string): Promise<ITransactionModel[]>{
     return this.productsApi.getAllTransactionToAccount(accountId).then((response) => {
-      return response
+      return response;
     }).catch((error) => {
-      throw Error(error)
+      throw Error(error);
     }).finally(() => {});
   }
 
-  orderProducts(products: IProductModel[]):IProductModel[]{
+  orderProducts(products: IProductModel[]): IProductModel[]{
     return this.orderByTypeAccount(products);
   }
 
-  orderByTypeAccount(products: IProductModel[]):IProductModel[]{
-    const orderAllProducts: IProductModel[] = []
-    Object.values(accountType).forEach((typeAccount)=>{
-      const orderByAccount = products.filter((product) => (product.accountType === typeAccount))
-      const orderByAmount = this.orderByAmountAvaliable(orderByAccount)
+  orderByTypeAccount(products: IProductModel[]): IProductModel[]{
+    const orderAllProducts: IProductModel[] = [];
+    Object.values(accountType).forEach((typeAccount) => {
+      const orderByAccount = products.filter((product) => (product.accountType === typeAccount));
+      const orderByAmount = this.orderByAmountAvaliable(orderByAccount);
       orderAllProducts.push(...orderByAmount);
-    })
+    });
     return orderAllProducts;
   }
 
-  orderByAmountAvaliable(products: IProductModel[]):IProductModel[]{
+  orderByAmountAvaliable(products: IProductModel[]): IProductModel[]{
     return products.sort((a, b) => {
       if (a.accountAmountAvaliable < b.accountAmountAvaliable) {
         return 1;
@@ -56,6 +56,6 @@ export class ProductsService implements IProductsService {
   }
 
   orderByDate(transactions: ITransactionModel[]): ITransactionModel[]{
-    return transactions.sort((a, b) => Date.parse(b.dateTransaction) - Date.parse(a.dateTransaction)); 
+    return transactions.sort((a, b) => Date.parse(b.dateTransaction) - Date.parse(a.dateTransaction));
   }
 }

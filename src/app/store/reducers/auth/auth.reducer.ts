@@ -1,8 +1,8 @@
-import { Action, createReducer, on } from "@ngrx/store";
-import { IAuthModel } from "src/app/shared/models/auth.model";
-import { defineUuid, deleteUuid } from "../../actions/auth.actions";
+import { Action, createReducer, on } from '@ngrx/store';
+import { IAuthModel } from 'src/app/shared/models/auth.model';
+import { defineUuid, deleteUuid } from '../../actions/auth.actions';
 
-export const colpatriaAuth: IAuthModel = { UuidUser: '' }
+export const colpatriaAuth: IAuthModel = { UuidUser: '' };
 
 const _authReducer = createReducer(
     colpatriaAuth,
@@ -11,5 +11,5 @@ const _authReducer = createReducer(
 );
 
 export function authReducer(state: IAuthModel = colpatriaAuth, action: Action): IAuthModel{
-    return _authReducer(state, action)
+    return _authReducer(state, action);
 }

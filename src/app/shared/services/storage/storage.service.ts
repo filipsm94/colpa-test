@@ -19,11 +19,11 @@ export class StorageService implements IStorageService {
   constructor(private store: Store<ColpatriaState>) { }
 
   private dispatchAction(action: TypedAction<any>){
-    this.store.dispatch(action)
+    this.store.dispatch(action);
   }
 
   setUuid(Uuid: string): void {
-    this.dispatchAction(defineUuid({payload: Uuid}))
+    this.dispatchAction(defineUuid({payload: Uuid}));
   }
 
   getUuid(): Promise<string> {
@@ -31,11 +31,11 @@ export class StorageService implements IStorageService {
       select(getUuidSelector),
       map((Uuid) => Uuid),
       take(1)
-    ).toPromise();    
+    ).toPromise();
   }
 
   setUser(user: IUserModel){
-    this.dispatchAction(defineUser({payload: user}))
+    this.dispatchAction(defineUser({payload: user}));
   }
 
   getUser(): Promise<IUserModel>{
@@ -47,7 +47,7 @@ export class StorageService implements IStorageService {
   }
 
   setProductSelected(product: IProductModel){
-    this.dispatchAction(defineProductSelected({payload: product}))
+    this.dispatchAction(defineProductSelected({payload: product}));
   }
 
   getProductSelected(): Promise<IProductModel>{
@@ -61,6 +61,6 @@ export class StorageService implements IStorageService {
   clearSessionInfo(){
     this.dispatchAction(deleteUuid());
     this.dispatchAction(deleteUser());
-    this.dispatchAction(deleteProductSelected())
+    this.dispatchAction(deleteProductSelected());
   }
 }

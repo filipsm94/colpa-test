@@ -5,7 +5,7 @@ import { IAuthService } from './auth.service.type';
 export class AuthServiceStub implements IAuthService{
 
   get isLogged(): Observable<boolean>{
-    return of(false)
+    return of(false);
   }
 
   setLogged(value: boolean): void {

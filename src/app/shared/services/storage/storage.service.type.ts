@@ -1,5 +1,5 @@
-import { IProductModel } from "../../models/products.model";
-import { IUserModel } from "../../models/user.model";
+import { IProductModel } from '../../models/products.model';
+import { IUserModel } from '../../models/user.model';
 
 export interface IStorageService {
 

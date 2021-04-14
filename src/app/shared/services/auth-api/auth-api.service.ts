@@ -5,6 +5,7 @@ import { catchError, map } from 'rxjs/operators';
 import { AuthRequestModel } from '../../models/user.model';
 import { StorageService } from '../storage/storage.service';
 import { IAuthApiService } from './auth-api.service.type';
+import { UrlConstans } from '../../constans/url-constant.model';
 
 @Injectable()
 export class AuthApiService implements IAuthApiService {
@@ -16,13 +17,13 @@ export class AuthApiService implements IAuthApiService {
 
   loginUser(infoLogin: AuthRequestModel): Promise<any> {
     return this.httpClient.post(
-        'https://run.mocky.io/v3/6b254644-d547-4b14-948a-a18333d2ac23',
+        `${UrlConstans.apiUrl}6b254644-d547-4b14-948a-a18333d2ac23`,
         infoLogin,
-        {observe:'response'}
+        {observe: 'response'}
       ).pipe(
       map((response) => {
         const uuid = response.headers.get('X-UUID-USER');
-        if(uuid){
+        if (uuid){
           this.storageService.setUuid(uuid);
         }
         return response.body;

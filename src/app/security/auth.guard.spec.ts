@@ -9,21 +9,21 @@ import { AuthGuard } from './auth.guard';
 describe('AuthGuard', () => {
   let guard: AuthGuard;
   let router: Router;
-  let authService: AuthService
+  let authService: AuthService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers:[
+      providers: [
         AuthGuard,
         { provide: AuthService, useClass: AuthServiceStub },
       ],
-      imports:[
+      imports: [
         RouterTestingModule.withRoutes([])
       ]
     });
     guard = TestBed.inject(AuthGuard);
     router = TestBed.inject(Router);
-    authService = TestBed.inject(AuthService)
+    authService = TestBed.inject(AuthService);
   });
 
   it('should be created', () => {
@@ -33,18 +33,18 @@ describe('AuthGuard', () => {
   it('should be return true if its logged', async () => {
     const mockActivatedRoutes = {} as ActivatedRouteSnapshot;
     const mockRoutes = {} as RouterStateSnapshot;
-    spyOn(authService,'isLoggedIn').and.returnValue(Promise.resolve(true));
-    const result = await  guard.canActivate(mockActivatedRoutes,mockRoutes)
+    spyOn(authService, 'isLoggedIn').and.returnValue(Promise.resolve(true));
+    const result = await  guard.canActivate(mockActivatedRoutes, mockRoutes);
     expect(result).toBeTruthy();
   });
 
-  it('should be return false if its logged',async () => {
+  it('should be return false if its logged', async () => {
     const mockActivatedRoutes = {} as ActivatedRouteSnapshot;
     const mockRoutes = {} as RouterStateSnapshot;
-    spyOn(authService,'isLoggedIn').and.returnValue(Promise.resolve(false));
-    spyOn(router,'navigate');
+    spyOn(authService, 'isLoggedIn').and.returnValue(Promise.resolve(false));
+    spyOn(router, 'navigate');
 
-    const result = await guard.canActivate(mockActivatedRoutes,mockRoutes)
+    const result = await guard.canActivate(mockActivatedRoutes, mockRoutes);
     expect(result).toBeFalsy();
     expect(router.navigate).toHaveBeenCalledWith(['/login']);
   });

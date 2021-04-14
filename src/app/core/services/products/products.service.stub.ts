@@ -4,22 +4,22 @@ import { IProductsService } from './products.service.type';
 
 export class ProductsServiceStub implements IProductsService {
   getAllProducts(user: IUserModel): Promise<IProductModel[]> {
-    return Promise.resolve([])
+    return Promise.resolve([]);
   }
   getTransactionToAccount(accountId: string): Promise<ITransactionModel[]> {
-    return Promise.resolve([])
+    return Promise.resolve([]);
   }
   orderProducts(products: IProductModel[]): IProductModel[] {
-    return []
+    return [];
   }
   orderByTypeAccount(products: IProductModel[]): IProductModel[] {
-    return []
+    return [];
   }
   orderByAmountAvaliable(products: IProductModel[]): IProductModel[] {
-    return []
+    return [];
   }
   orderByDate(transactions: ITransactionModel[]): ITransactionModel[] {
-    return []
+    return [];
   }
 
 }

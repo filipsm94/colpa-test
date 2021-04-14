@@ -21,11 +21,11 @@ describe('DashboardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ DashboardComponent, CardProductComponent ],
-      providers:[
+      providers: [
         { provide: StorageService, useClass: StorageServiceStub },
         { provide: ProductsService, useClass: ProductsServiceStub },
       ],
-      imports:[
+      imports: [
         RouterTestingModule.withRoutes([])
       ]
     })
@@ -40,38 +40,38 @@ describe('DashboardComponent', () => {
 
   it('should be call ngOnInit', async () => {
     const mockUser: IUserModel = {
-      nombre:'felipe',
-      apellido:'mesa',
-      cedula:10,
+      nombre: 'felipe',
+      apellido: 'mesa',
+      cedula: 10,
     };
     const mockProducts: IProductModel[] = [
       {
-        accountId:'654651484',
-        accountType:'Cuenta de ahorros',
-        accountState:'Activa',
-        accountAmountAvaliable:13215616
+        accountId: '654651484',
+        accountType: 'Cuenta de ahorros',
+        accountState: 'Activa',
+        accountAmountAvaliable: 13215616
       },
       {
-        accountId:'68469682254',
-        accountType:'Tarjeta de Credito',
-        accountState:'Activa',
-        accountAmountAvaliable:564681
+        accountId: '68469682254',
+        accountType: 'Tarjeta de Credito',
+        accountState: 'Activa',
+        accountAmountAvaliable: 564681
       },
       {
-          accountId:'6594851484',
-          accountType:'Cuenta de ahorros',
-          accountState:'Activa',
-          accountAmountAvaliable:5465165168
+          accountId: '6594851484',
+          accountType: 'Cuenta de ahorros',
+          accountState: 'Activa',
+          accountAmountAvaliable: 5465165168
       },
       {
-          accountId:'654451489',
-          accountType:'Cuenta Corriente',
-          accountState:'Inactiva',
-          accountAmountAvaliable:200
+          accountId: '654451489',
+          accountType: 'Cuenta Corriente',
+          accountState: 'Inactiva',
+          accountAmountAvaliable: 200
       },
     ];
-    spyOn(storageService,'getUser').and.returnValue(Promise.resolve(mockUser));
-    spyOn(productsService,'orderProducts').and.returnValue(mockProducts);
+    spyOn(storageService, 'getUser').and.returnValue(Promise.resolve(mockUser));
+    spyOn(productsService, 'orderProducts').and.returnValue(mockProducts);
     await component.ngOnInit();
     expect(component.user).toEqual(mockUser);
     expect(component.products).toEqual(mockProducts);
@@ -80,13 +80,13 @@ describe('DashboardComponent', () => {
   it('should be call goToSelectionProductToDetail', async () => {
 
     const mockProducts: IProductModel = {
-      accountId:'654651484',
-      accountType:'Cuenta de ahorros',
-      accountState:'Activa',
-      accountAmountAvaliable:13215616
+      accountId: '654651484',
+      accountType: 'Cuenta de ahorros',
+      accountState: 'Activa',
+      accountAmountAvaliable: 13215616
     };
-    spyOn(storageService,'setProductSelected');
-    spyOn(router,'navigate');
+    spyOn(storageService, 'setProductSelected');
+    spyOn(router, 'navigate');
     await component.goToSelectionProductToDetail(mockProducts);
     expect(storageService.setProductSelected).toHaveBeenCalledWith(mockProducts);
     expect(router.navigate).toHaveBeenCalledWith(['products/detail']);

@@ -12,8 +12,8 @@ import { ProductsService } from '../../services/products/products.service';
 })
 export class DashboardComponent implements OnInit {
 
-  public user: IUserModel ={};
-  public products: IProductModel[] = []
+  public user: IUserModel = {};
+  public products: IProductModel[] = [];
 
   constructor(
     private storageService: StorageService,
@@ -23,23 +23,23 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getUsertoSession()
+    this.getUsertoSession();
     this.getProducts();
   }
 
   async getUsertoSession(): Promise<void> {
-    this.user = await this.storageService.getUser(); 
+    this.user = await this.storageService.getUser();
   }
 
   async getProducts(): Promise<void> {
-    const allProducts = await this.productsService.getAllProducts({...this.user})
+    const allProducts = await this.productsService.getAllProducts({...this.user});
     this.products = this.productsService.orderProducts(allProducts);
   }
 
   goToSelectionProductToDetail(productEvent: IProductModel){
     this.storageService.setProductSelected(productEvent);
-    this.router.navigate(['products/detail'])
+    this.router.navigate(['products/detail']);
   }
 
-  
+
 }

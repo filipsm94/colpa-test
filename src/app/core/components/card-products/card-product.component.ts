@@ -12,12 +12,12 @@ export class CardProductComponent {
   @Output() productSelectionEvent = new EventEmitter<IProductModel>();
 
   constructor() {
-    this.product={
-      accountAmountAvaliable:0,
-      accountId:'',
-      accountState:'',
-      accountType:''
-    }
+    this.product = {
+      accountAmountAvaliable: 0,
+      accountId: '',
+      accountState: '',
+      accountType: ''
+    };
   }
 
   selectedProduct(product: IProductModel): void{

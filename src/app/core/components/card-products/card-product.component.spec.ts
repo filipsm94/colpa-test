@@ -11,7 +11,7 @@ describe('CardProductComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ CardProductComponent, OpaqueTextPipe ],
-      providers:[
+      providers: [
         OpaqueTextPipe
       ],
     })
@@ -30,13 +30,13 @@ describe('CardProductComponent', () => {
 
   it('should selectedProduct', () => {
     const mockProduct: IProductModel = {
-      accountAmountAvaliable:0,
-      accountId:'12313',
-      accountState:'activa',
-      accountType:'',
+      accountAmountAvaliable: 0,
+      accountId: '12313',
+      accountState: 'activa',
+      accountType: '',
     };
-    spyOn(component.productSelectionEvent,'emit');
-    component.selectedProduct(mockProduct)
+    spyOn(component.productSelectionEvent, 'emit');
+    component.selectedProduct(mockProduct);
     expect(component.productSelectionEvent.emit).toHaveBeenCalledWith(mockProduct);
   });
 });

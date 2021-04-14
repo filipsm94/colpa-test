@@ -14,7 +14,7 @@ class RouterStub {
 }
 
 describe('LoginComponent', () => {
-  
+
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
@@ -25,7 +25,7 @@ describe('LoginComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
-      providers:[
+      providers: [
         { provide: AuthService, useClass: AuthServiceStub },
         { provide: Router, useClass: RouterStub }
       ]
@@ -33,7 +33,7 @@ describe('LoginComponent', () => {
     .compileComponents();
     authService = TestBed.inject(AuthService);
     router = TestBed.inject(Router);
-    fixture = TestBed.createComponent(LoginComponent)
+    fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
   });
 
@@ -44,19 +44,19 @@ describe('LoginComponent', () => {
 
   it('should submit', async () => {
     const mockUser: IUserModel = {
-      nombre:'felipe',
-      apellido:'mesa',
-      cedula:10,
-    }
-    spyOn(authService,'loginUser').and.returnValue(Promise.resolve(mockUser));
-    spyOn(authService,'saveUser');
-    spyOn(component,'goToDashboard');
+      nombre: 'felipe',
+      apellido: 'mesa',
+      cedula: 10,
+    };
+    spyOn(authService, 'loginUser').and.returnValue(Promise.resolve(mockUser));
+    spyOn(authService, 'saveUser');
+    spyOn(component, 'goToDashboard');
     component.loginForm = new FormBuilder().group({
-      ['username']:'sadfsd',
-      ['password']:'aAc3sdfasdg'
-    })
+      ['username']: 'sadfsd',
+      ['password']: 'aAc3sdfasdg'
+    });
 
-    await component.submit();    
+    await component.submit();
     expect(authService.saveUser).toHaveBeenCalled();
     expect(component.goToDashboard).toHaveBeenCalled();
   });
@@ -64,17 +64,17 @@ describe('LoginComponent', () => {
 
   it('should saveUserInStore', () => {
     const mockUser: IUserModel = {
-      nombre:'felipe',
-      apellido:'mesa',
-      cedula:10,
-    }
-    spyOn(authService,'saveUser');
+      nombre: 'felipe',
+      apellido: 'mesa',
+      cedula: 10,
+    };
+    spyOn(authService, 'saveUser');
     component.saveUserInStore(mockUser);
     expect(authService.saveUser).toHaveBeenCalledWith(mockUser);
   });
 
   it('should goToDashboard', () => {
-    spyOn(router,'navigate');
+    spyOn(router, 'navigate');
     component.goToDashboard();
     expect(router.navigate).toHaveBeenCalledWith(['/products']);
   });

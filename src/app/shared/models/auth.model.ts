@@ -1,3 +1,3 @@
 export interface IAuthModel{
-    UuidUser: string
+    UuidUser: string;
 }

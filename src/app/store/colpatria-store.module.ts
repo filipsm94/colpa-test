@@ -8,7 +8,7 @@ import { reducers } from './reducers';
   imports: [
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
-      maxAge:25,
+      maxAge: 25,
       logOnly: environment.production
     })
   ]

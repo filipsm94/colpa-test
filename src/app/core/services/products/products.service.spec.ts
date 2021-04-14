@@ -12,7 +12,7 @@ describe('ProductsService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers:[
+      providers: [
         ProductsService,
         { provide: ProductsApiService, useClass: ProductsApiServiceStub },
       ],
@@ -25,45 +25,45 @@ describe('ProductsService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should be return list of products', async() => {
+  it('should be return list of products', async () => {
     const mockUser: IUserModel = {
-      nombre:'felipe',
-      apellido:'mesa',
-      cedula:10,
-    }
+      nombre: 'felipe',
+      apellido: 'mesa',
+      cedula: 10,
+    };
     const mockProducts: IProductModel[] = [
       {
-        accountId:'654651484',
-        accountType:'Cuenta de ahorros',
-        accountState:'Activa',
-        accountAmountAvaliable:13215616
+        accountId: '654651484',
+        accountType: 'Cuenta de ahorros',
+        accountState: 'Activa',
+        accountAmountAvaliable: 13215616
       },
       {
-        accountId:'68469682254',
-        accountType:'Tarjeta de Credito',
-        accountState:'Activa',
-        accountAmountAvaliable:564681
+        accountId: '68469682254',
+        accountType: 'Tarjeta de Credito',
+        accountState: 'Activa',
+        accountAmountAvaliable: 564681
       },
       {
-          accountId:'6594851484',
-          accountType:'Cuenta de ahorros',
-          accountState:'Activa',
-          accountAmountAvaliable:5465165168
+          accountId: '6594851484',
+          accountType: 'Cuenta de ahorros',
+          accountState: 'Activa',
+          accountAmountAvaliable: 5465165168
       },
       {
-          accountId:'654451489',
-          accountType:'Cuenta Corriente',
-          accountState:'Inactiva',
-          accountAmountAvaliable:200
+          accountId: '654451489',
+          accountType: 'Cuenta Corriente',
+          accountState: 'Inactiva',
+          accountAmountAvaliable: 200
       },
     ];
 
-    spyOn(productsApiService,'getAllProductsToUser').and.returnValue(Promise.resolve(mockProducts))
+    spyOn(productsApiService, 'getAllProductsToUser').and.returnValue(Promise.resolve(mockProducts));
 
-    const result = await service.getAllProducts(mockUser)
+    const result = await service.getAllProducts(mockUser);
 
     expect(result).toEqual(mockProducts);
-    
+
   });
 
 
@@ -88,74 +88,74 @@ describe('ProductsService', () => {
         description: 'giro'
       },
     ];
-    
-    spyOn(productsApiService,'getAllTransactionToAccount').and.returnValue(Promise.resolve(expectResponse))
 
-    const result = await service.getTransactionToAccount('4124')
+    spyOn(productsApiService, 'getAllTransactionToAccount').and.returnValue(Promise.resolve(expectResponse));
+
+    const result = await service.getTransactionToAccount('4124');
 
     expect(result).toEqual(expectResponse);
-    
+
   });
 
   it('should be return list of product in order', async () => {
     const mockProducts: IProductModel[] = [
       {
-        accountId:'654651484',
-        accountType:'Cuenta de ahorros',
-        accountState:'Activa',
-        accountAmountAvaliable:13215616
+        accountId: '654651484',
+        accountType: 'Cuenta de ahorros',
+        accountState: 'Activa',
+        accountAmountAvaliable: 13215616
       },
       {
-        accountId:'68469682254',
-        accountType:'Tarjeta de Credito',
-        accountState:'Activa',
-        accountAmountAvaliable:564681
+        accountId: '68469682254',
+        accountType: 'Tarjeta de Credito',
+        accountState: 'Activa',
+        accountAmountAvaliable: 564681
       },
       {
-        accountId:'6594851484',
-        accountType:'Cuenta de ahorros',
-        accountState:'Activa',
-        accountAmountAvaliable:5465165168
+        accountId: '6594851484',
+        accountType: 'Cuenta de ahorros',
+        accountState: 'Activa',
+        accountAmountAvaliable: 5465165168
       },
       {
-        accountId:'654451489',
-        accountType:'Cuenta Corriente',
-        accountState:'Inactiva',
-        accountAmountAvaliable:200
+        accountId: '654451489',
+        accountType: 'Cuenta Corriente',
+        accountState: 'Inactiva',
+        accountAmountAvaliable: 200
       },
     ];
 
     const expectProducts: IProductModel[] = [
       {
-          accountId:'6594851484',
-          accountType:'Cuenta de ahorros',
-          accountState:'Activa',
-          accountAmountAvaliable:5465165168
+          accountId: '6594851484',
+          accountType: 'Cuenta de ahorros',
+          accountState: 'Activa',
+          accountAmountAvaliable: 5465165168
       },
       {
-        accountId:'654651484',
-        accountType:'Cuenta de ahorros',
-        accountState:'Activa',
-        accountAmountAvaliable:13215616
+        accountId: '654651484',
+        accountType: 'Cuenta de ahorros',
+        accountState: 'Activa',
+        accountAmountAvaliable: 13215616
       },
       {
-          accountId:'654451489',
-          accountType:'Cuenta Corriente',
-          accountState:'Inactiva',
-          accountAmountAvaliable:200
+          accountId: '654451489',
+          accountType: 'Cuenta Corriente',
+          accountState: 'Inactiva',
+          accountAmountAvaliable: 200
       },
       {
-        accountId:'68469682254',
-        accountType:'Tarjeta de Credito',
-        accountState:'Activa',
-        accountAmountAvaliable:564681
+        accountId: '68469682254',
+        accountType: 'Tarjeta de Credito',
+        accountState: 'Activa',
+        accountAmountAvaliable: 564681
       },
     ];
 
     const result = service.orderProducts(mockProducts);
 
     expect(result).toEqual(expectProducts);
-    
+
   });
 
 
@@ -205,7 +205,7 @@ describe('ProductsService', () => {
     const result = service.orderByDate(mockTransactions);
 
     expect(result).toEqual(expectTransactions);
-    
-  });  
+
+  });
 
 });

@@ -19,7 +19,7 @@ describe('StorageService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers:[
+      providers: [
         StorageService,
         provideMockStore()
       ]
@@ -33,10 +33,10 @@ describe('StorageService', () => {
   });
 
   it('should be call setUuid', () => {
-    spyOn(store,'dispatch');
+    spyOn(store, 'dispatch');
     service.setUuid('algo');
     expect(store.dispatch).toHaveBeenCalledWith(
-      defineUuid({payload:'algo'})
+      defineUuid({payload: 'algo'})
     );
   });
 
@@ -48,23 +48,23 @@ describe('StorageService', () => {
 
   it('should be call setUser', () => {
     const mockUser: IUserModel = {
-      nombre:'felipe',
-      apellido:'mesa',
-      cedula:10,
-    }
-    spyOn(store,'dispatch');
+      nombre: 'felipe',
+      apellido: 'mesa',
+      cedula: 10,
+    };
+    spyOn(store, 'dispatch');
     service.setUser(mockUser);
     expect(store.dispatch).toHaveBeenCalledWith(
-      defineUser({payload:mockUser})
+      defineUser({payload: mockUser})
     );
   });
 
   it('should be call getUser', async () => {
     const mockUser: IUserModel = {
-      nombre:'felipe',
-      apellido:'mesa',
-      cedula:10,
-    }
+      nombre: 'felipe',
+      apellido: 'mesa',
+      cedula: 10,
+    };
     store.overrideSelector(getUserSelector, mockUser);
     const response = await service.getUser();
     expect(response).toEqual(mockUser);
@@ -72,33 +72,33 @@ describe('StorageService', () => {
 
   it('should be call setProductSelected', () => {
     const mockProduct: IProductModel = {
-      accountAmountAvaliable:0,
-      accountId:'',
-      accountState:'',
-      accountType:'',
+      accountAmountAvaliable: 0,
+      accountId: '',
+      accountState: '',
+      accountType: '',
     };
-    spyOn(store,'dispatch');
+    spyOn(store, 'dispatch');
     service.setProductSelected(mockProduct);
     expect(store.dispatch).toHaveBeenCalledWith(
-      defineProductSelected({payload:mockProduct})
+      defineProductSelected({payload: mockProduct})
     );
   });
 
   it('should be call getProductSelected', async () => {
     const mockProduct: IProductModel = {
-      accountAmountAvaliable:0,
-      accountId:'12313',
-      accountState:'activa',
-      accountType:'',
+      accountAmountAvaliable: 0,
+      accountId: '12313',
+      accountState: 'activa',
+      accountType: '',
     };
     store.overrideSelector(getProductSelector, mockProduct);
     const response = await service.getProductSelected();
-    
+
     expect(response).toEqual(mockProduct);
   });
 
   it('should be call closeSessionInfo', () => {
-    spyOn(store,'dispatch');
+    spyOn(store, 'dispatch');
     service.clearSessionInfo();
     expect(store.dispatch).toHaveBeenCalledWith(
       deleteProductSelected()

@@ -10,7 +10,7 @@ import { ProductsService } from '../../services/products/products.service';
 })
 export class DetailProductComponent implements OnInit {
 
-  public transactions: ITransactionModel[] = []  
+  public transactions: ITransactionModel[] = [];
   public product: IProductModel|undefined;
 
   constructor(
@@ -25,7 +25,7 @@ export class DetailProductComponent implements OnInit {
   async loadInfoTrasactions(){
     this.product = await this.storageService.getProductSelected();
     const getAllTransactions = await this.productsService.getTransactionToAccount(this.product?.accountId);
-    this.transactions = this.productsService.orderByDate(getAllTransactions)
+    this.transactions = this.productsService.orderByDate(getAllTransactions);
   }
-  
+
 }

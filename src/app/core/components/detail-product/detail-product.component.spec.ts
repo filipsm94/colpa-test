@@ -15,33 +15,33 @@ describe('DetailProductComponent', () => {
   let fixture: ComponentFixture<DetailProductComponent>;
   let storageService: StorageService;
   let productsService: ProductsService;
-  
+
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ DetailProductComponent, OpaqueTextPipe ],
-      providers:[
+      providers: [
         { provide: StorageService, useClass: StorageServiceStub },
         { provide: ProductsService, useClass: ProductsServiceStub },
         OpaqueTextPipe
       ],
-      imports:[
+      imports: [
         RouterTestingModule.withRoutes([])
       ]
     })
     .compileComponents();
     storageService = TestBed.inject(StorageService);
     productsService = TestBed.inject(ProductsService);
-    fixture = TestBed.createComponent(DetailProductComponent)
+    fixture = TestBed.createComponent(DetailProductComponent);
     component = fixture.componentInstance;
   });
-  
+
   it('should ngOnInit', fakeAsync( () => {
     const mockProduct: IProductModel = {
-      accountAmountAvaliable:0,
-      accountId:'12313',
-      accountState:'activa',
-      accountType:'',
+      accountAmountAvaliable: 0,
+      accountId: '12313',
+      accountState: 'activa',
+      accountType: '',
     };
     const mockTransactions: ITransactionModel[] = [
       {
@@ -63,10 +63,10 @@ describe('DetailProductComponent', () => {
         description: 'giro'
       },
     ];
-    spyOn(storageService,'getProductSelected').and.returnValue(Promise.resolve(mockProduct));
-    spyOn(productsService,'orderByDate').and.returnValue(mockTransactions);
+    spyOn(storageService, 'getProductSelected').and.returnValue(Promise.resolve(mockProduct));
+    spyOn(productsService, 'orderByDate').and.returnValue(mockTransactions);
     component.ngOnInit();
-    tick(1000)
+    tick(1000);
     expect(component.product?.accountId).toEqual('12313');
     expect(component.transactions).toEqual(mockTransactions);
   }));

@@ -12,8 +12,8 @@ import { AuthService } from '../shared/services/auth/auth.service';
 export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
-  public hasError = false
-  
+  public hasError = false;
+
   private infoLogin: AuthRequestModel;
 
   constructor(
@@ -21,19 +21,19 @@ export class LoginComponent implements OnInit {
     private router: Router
   ) {
     this.loginForm = new FormGroup({
-      username: new FormControl(null,[
+      username: new FormControl(null, [
         Validators.required,
         Validators.minLength(4)]),
-      password: new FormControl(null,[
+      password: new FormControl(null, [
         Validators.required,
         Validators.minLength(4),
-        Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/) 
+        Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$/)
       ]),
     });
     this.infoLogin = {
-      username:'',
-      password:''
-    }
+      username: '',
+      password: ''
+    };
   }
 
   get username() { return this.loginForm.get('username'); }
@@ -54,10 +54,10 @@ export class LoginComponent implements OnInit {
   }
 
   saveUserInStore(user: IUserModel){
-    this.authService.saveUser(user)
+    this.authService.saveUser(user);
   }
 
-  goToDashboard():void{
+  goToDashboard(): void{
     this.router.navigate(['/products']);
   }
 

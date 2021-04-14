@@ -18,12 +18,12 @@ describe('AuthService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers:[
+      providers: [
         AuthService,
         { provide: AuthApiService, useClass: AuthApiServiceStub },
         { provide: StorageService, useClass: StorageServiceStub },
       ],
-      imports:[
+      imports: [
         RouterTestingModule.withRoutes([])
       ]
     });
@@ -38,7 +38,7 @@ describe('AuthService', () => {
   });
 
   it('should return true for isLogged', () => {
-    spyOnProperty(service,'isLogged').and.returnValue(of(true));
+    spyOnProperty(service, 'isLogged').and.returnValue(of(true));
     const result = service.isLogged;
     expect(result).toBeTruthy();
   });
@@ -46,38 +46,38 @@ describe('AuthService', () => {
 
   it('should return true for isLogged', async () => {
     const mockUser: IUserModel = {
-      nombre:'felipe',
-      apellido:'mesa',
-      cedula:10,
-    }
-    spyOn(authApiService,'loginUser').and.returnValue(Promise.resolve({user:mockUser}))
+      nombre: 'felipe',
+      apellido: 'mesa',
+      cedula: 10,
+    };
+    spyOn(authApiService, 'loginUser').and.returnValue(Promise.resolve({user: mockUser}));
     const mockUserRequest: AuthRequestModel = {
-      username:'felipe',
-      password:'123'
+      username: 'felipe',
+      password: '123'
     };
     const result = await service.loginUser(mockUserRequest);
     expect(result).toEqual(mockUser);
   });
 
   it('should return true for isLoggedIn in true', async () => {
-    spyOn(service,'setLogged');
-    spyOn(storageService,'getUuid').and.returnValue(Promise.resolve('any'))
+    spyOn(service, 'setLogged');
+    spyOn(storageService, 'getUuid').and.returnValue(Promise.resolve('any'));
     const result = await service.isLoggedIn();
     expect(result).toBeTruthy();
     expect(service.setLogged).toHaveBeenCalledWith(true);
   });
 
   it('should return true for isLoggedIn in false', async () => {
-    spyOn(service,'setLogged');
-    spyOn(storageService,'getUuid').and.returnValue(Promise.resolve(''))
+    spyOn(service, 'setLogged');
+    spyOn(storageService, 'getUuid').and.returnValue(Promise.resolve(''));
     const result = await service.isLoggedIn();
     expect(result).toBeFalsy();
   });
 
   it('should be call loggoutUser', () => {
-    spyOn(service,'setLogged');
-    spyOn(router,'navigate');
-    spyOn(storageService,'clearSessionInfo');
+    spyOn(service, 'setLogged');
+    spyOn(router, 'navigate');
+    spyOn(storageService, 'clearSessionInfo');
     service.loggoutUser();
     expect(storageService.clearSessionInfo).toHaveBeenCalled();
     expect(service.setLogged).toHaveBeenCalledWith(false);
@@ -86,11 +86,11 @@ describe('AuthService', () => {
 
   it('should be call loggoutUser', () => {
     const mockUser: IUserModel = {
-      nombre:'felipe',
-      apellido:'mesa',
-      cedula:10,
-    }
-    spyOn(storageService,'setUser');
+      nombre: 'felipe',
+      apellido: 'mesa',
+      cedula: 10,
+    };
+    spyOn(storageService, 'setUser');
     service.saveUser(mockUser);
     expect(storageService.setUser).toHaveBeenCalledWith(mockUser);
   });
